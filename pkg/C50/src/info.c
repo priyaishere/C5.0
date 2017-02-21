@@ -101,7 +101,7 @@ double TotalInfo(double V[], DiscrValue MinVal, DiscrValue MaxVal)
     }
 Sum=Sum-1;
 	Sum=Sum*q;
-    return pow(TotalCases,alpha) - Sum;
+    return Sum-pow(TotalCases,alpha) ;
 }
 
 
