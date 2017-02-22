@@ -46,7 +46,7 @@
 
 
 double ComputeGain(double BaseInfo, float UnknFrac, DiscrValue MaxVal,
-		   CaseCount TotalCases)
+		   CaseCount TotalCases,double UnknownRate)
 /*     -----------  */
 {
     DiscrValue	v;
@@ -63,7 +63,7 @@ double ComputeGain(double BaseInfo, float UnknFrac, DiscrValue MaxVal,
     {
 	ThisInfo += TotalInfo(GEnv.Freq[v], 1, MaxClass);
     }
-    ThisInfo /= TotalCases;
+    ThisInfo =UnknownRate*(ThisInfo/TotalCases);
 
     /*  Set the gain in information for all cases, adjusted for unknowns  */
 
