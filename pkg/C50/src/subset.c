@@ -333,7 +333,7 @@ void EvalSubset(Attribute Att, CaseCount Cases)
 	    }
 
 	    Info[Att] = BestInfo;
-	    Gain[Att] = BestGain - Penalty / KnownCases;
+	    Gain[Att] = BestGain - (Penalty / KnownCases)*UnknownRate;
 	    BestVal   = Val;
 	}
     }
@@ -381,7 +381,7 @@ void Merge(DiscrValue x, DiscrValue y, CaseCount Cases)
     }
 Entr=Entr*q;
     GEnv.SubsetInfo[x] = pow(GEnv.ValFreq[x],alpha)/ Cases;
-    GEnv.SubsetEntr[x] = Entr + KnownCases * Log(KnownCases);
+    GEnv.SubsetEntr[x] = Entr + pow(KnownCases,alpha)-1;
 
     /*  Eliminate y from working blocks  */
 
